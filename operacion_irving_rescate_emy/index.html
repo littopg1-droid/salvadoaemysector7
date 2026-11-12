@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070b18" />
+  <meta name="description" content="Irving: Rescate de Emy. Videojuego de plataformas 2D ambientado en el Sector 7 del año 2145." />
+  <title>Irving: Rescate de Emy | Plataforma 2D</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <div class="brand">
+        <div class="brand-symbol" aria-hidden="true">I<span>·</span>7</div>
+        <div><p class="eyebrow">OPERACIÓN // 2145</p><h1>IRVING <span>RESCATE DE EMY</span></h1></div>
+      </div>
+      <div class="connection"><span class="status-led"></span> SEÑAL ACTIVA <span class="version">V.1.0</span></div>
+    </header>
+
+    <section class="dashboard" aria-label="Estado de la misión">
+      <div class="agent">
+        <img src="assets/irving-retrato.jpg" alt="Retrato del protagonista Irving" />
+        <div><span class="hud-label">AGENTE</span><strong>IRVING</strong><small>Unidad de rescate // Sector 7</small></div>
+      </div>
+      <div class="stat"><span class="hud-label">INTEGRIDAD</span><strong id="healthHud" aria-live="polite">♥ ♥ ♥</strong><small>Escudo táctico</small></div>
+      <div class="stat"><span class="hud-label">CÉLULAS DE ENERGÍA</span><strong id="cellHud" aria-live="polite">0 / 4</strong><small>Para desbloquear la salida</small></div>
+      <div class="stat"><span class="hud-label">MISIÓN</span><strong id="levelHud">01 / 03</strong><small id="levelName">Perímetro en llamas</small></div>
+      <div class="hud-actions"><button id="soundBtn" class="icon-btn" title="Activar o desactivar sonido" aria-label="Activar sonido">♪ <span id="soundText">OFF</span></button><button id="pauseBtn" class="icon-btn" title="Pausar" aria-label="Pausar">Ⅱ</button></div>
+    </section>
+
+    <main>
+      <div class="game-frame" id="gameFrame">
+        <canvas id="game" width="960" height="540" aria-label="Juego 2D de Irving rescatando a Emy"></canvas>
+        <div class="corner top-left" aria-hidden="true"></div><div class="corner top-right" aria-hidden="true"></div>
+        <div class="corner bottom-left" aria-hidden="true"></div><div class="corner bottom-right" aria-hidden="true"></div>
+        <div class="on-screen-label"><span class="live-dot"></span><span id="worldLabel">SECTOR 7 — PERÍMETRO NORTE</span></div>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+        <div class="overlay is-visible" id="overlay" role="dialog" aria-labelledby="overlayTitle" aria-modal="true">
+          <div class="panel" id="overlayPanel">
+            <div class="panel-head"><span class="panel-kicker" id="overlayKicker">TRANSMISIÓN ENTRANTE // 2145</span><span class="panel-symbol">✦</span></div>
+            <img class="panel-portrait" id="panelPortrait" src="assets/irving-retrato.jpg" alt="Irving" />
+            <h2 id="overlayTitle">LA ÚLTIMA MISIÓN DE IRVING</h2>
+            <p id="overlayText">La colonia está bajo ataque. La facción renegada ha capturado a <b>Emy</b> y la mantiene prisionera en la Torre del Núcleo. Irving deberá atravesar las ruinas, recuperar energía y liberar a Emy antes de que sea demasiado tarde.</p>
+            <p class="panel-hint" id="overlayHint">MUÉVETE CON A / D · SALTA CON ESPACIO · DISPARA CON J · INTERACTÚA CON E</p>
+            <button class="primary-btn" id="overlayPrimary">INICIAR MISIÓN <span>↗</span></button>
+            <button class="secondary-btn" id="overlaySecondary" hidden>MENÚ PRINCIPAL</button>
+          </div>
+        </div>
+
+        <div class="touch-controls" id="touchControls" aria-label="Controles táctiles">
+          <div class="touch-left"><button data-control="left" aria-label="Ir a la izquierda">◀</button><button data-control="right" aria-label="Ir a la derecha">▶</button></div>
+          <div class="touch-right"><button class="touch-shoot" data-control="shoot" aria-label="Disparar">✦<small>DISPARO</small></button><button class="touch-jump" data-control="jump" aria-label="Saltar">▲<small>SALTO</small></button><button class="touch-interact" data-control="interact" aria-label="Interactuar">E</button></div>
+        </div>
+      </div>
+      <div class="bottom-bar"><div><span class="teal">◎</span> <strong id="objectiveText">OBJETIVO:</strong> <span id="objectiveDetail">Recupera energía y encuentra a Emy.</span></div><div class="controls-desc"><kbd>A</kbd><kbd>D</kbd> MOVER <kbd>ESPACIO</kbd> SALTAR <kbd>J</kbd> DISPARAR <kbd>E</kbd> ABRIR <kbd>P</kbd> PAUSA</div></div>
+    </main>
+    <footer><span>SECTOR 7 // UNA HISTORIA DE IRVING Y EMY</span><span>UN VIDEOJUEGO HTML5 · LISTO PARA VS CODE</span></footer>
+  </div>
+</body>
+</html>
